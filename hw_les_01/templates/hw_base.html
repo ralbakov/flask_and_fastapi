@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style type="text/css">
+        header, footer {
+          color: black;
+          background-color: lemonchiffon;
+          text-align: center;
+          padding: 10px;
+          font-size: 34px;
+          margin-block-end: 21px;
+        }
+        nav a {
+        background-color: silver;
+        margin-right: 6px;
+        padding: 10px;
+        color: black;
+        text-decoration: none;
+        border-radius: 3px;
+        transition: 1s;
+        font-size: 22px;
+        }
+      </style>
+    <title>        
+    {% block title %}
+        {{ title }}
+    {% endblock %}
+    </title>
+</head>
+<body>
+    <header>
+        Интернет-магазин AlbakoV
+    </header>
+    <main>
+        <nav>
+            <a href="/clothes/">Одежда</a>
+            <a href="/shoes/">Обувь</a>
+            <a href="/jacket/">Куртки</a>
+        </nav>
+    {% block content %}
+    {{ content }}
+    {% endblock %}
+    </main>
+    <footer>
+        <a>Все права защищены (с) AlbakoV</a>
+    </footer>
+
+</body>
+</html>
