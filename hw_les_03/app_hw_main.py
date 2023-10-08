@@ -13,10 +13,13 @@ csfr = CSRFProtect(app)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///userdata.db'
 db.init_app(app)
 
-@app.route('/', methods=['GET', 'POST'])
-def start():
+@app.cli.command('init-db')
+def creat_db():
     db.create_all() #для создания базы данных
     print('DataBase create')
+    
+@app.route('/', methods=['GET', 'POST'])
+def start():
     form = RegistrationUser() #get-запрос отрисовывает формы
     if request.method == 'POST' and form.validate(): #post-запрос, получаем данные и загоняем в БД "userdata.db"
         user_name = form.user_name.data
