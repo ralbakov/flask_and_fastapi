@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{ title }}
+{% endblock %}
+
+{% block content %}
+    <p>
+    Задача № {{ content.id }}: {{ content.title }}, 
+    описание - {{ content.description }}, 
+    статус - {% if content.status == True %} 
+    <font color="green">{{ 'выполнено' }}</font>
+            {% else %}
+    <font color="red">{{ 'не выполнено' }}</font>
+            {% endif %}
+    <hr>
+    </p>
+    <form action="/tasks/{{ content.id }}" method="post">
+        <p> Для обновления задачи заполните следующие поля: </p>
+
+        <p>
+            Введите id задачи: <input  type="number" name="task_id" min="1"/> 
+        </p>
+
+        <p>
+            Название задачи: <input type="text" name="title"/>
+        </p>
+        <p>
+            Описание задачи: <textarea rows="5" cols="35" name="description"></textarea>
+        </p>
+        <p>
+            Статус задачи: 
+            <select name="status">
+                <option value=True> Выполнено </option>
+                <option value=False> Не выполнено </option>
+            </select>
+        </p>
+        <p>
+            <input type="submit" value="Обновить"> <br/> <hr>
+        </p>
+    </form>
+    <nav>
+        <a href="/">На главную</a>  |  
+        <a href="/tasks/">Список задач</a>
+        
+    </nav>
+    
+</p>
+
+{% endblock %}

@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{ title }}
+{% endblock %}
+
+{% block content %}
+<p>
+    Список задач:
+    <p>
+    <hr>
+    {% for task in content %}
+    Задача № {{ task.id }}: {{ task.title }}, 
+    описание - {{ task.description }}, 
+    статус - {% if task.status == True %} 
+    <font color="green">{{ 'выполнено' }}</font>
+            {% else %}
+    <font color="red">{{ 'не выполнено' }}</font>
+            {% endif %}
+    <hr>
+    {% endfor %}
+    </p>
+
+    <form method="post">
+        <p> Добавление задачи </p>
+        <p> 
+            Введите id задачи: <input  type="number" name="id" min="1"/> 
+        </p>
+        <p>
+            Название задачи: <input type="text" name="title"/>
+        </p>
+        <p>
+            Описание задачи: <textarea rows="5" cols="35" name="description"></textarea>
+        </p>
+        <p>
+            Статус задачи: 
+            <select name="status">
+                <option value=True> Выполнено </option>
+                <option value=False> Не выполнено </option>
+            </select>
+        </p>
+        <p>
+            <input action="/tasks/" type="submit" value="Добавить"> <br/> <hr>
+        </p>
+    </form>
+
+    <nav>
+        <a href="/">На главную</a>
+    </nav>
+    
+</p>
+
+{% endblock %}

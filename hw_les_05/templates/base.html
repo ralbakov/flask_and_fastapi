@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        {% block title %}
+        {{ title }}
+        {% endblock %}
+    </title>
+</head>
+
+<body>
+    <h1> Домашнее задание. Урок 5. Знакомство с FastAPI</h1>
+    {% block content %}
+    <p>
+        
+        <i>
+    {{ content }}
+        </i>
+
+    </p>
+    
+    <nav>
+        <a href="/tasks/">Список всех задач</a> |  
+    </nav>
+    {% endblock %}
+</body>
+
+<footer>
+    <a>
+        (c) Ruslan Albakov
+    </a>
+
+    <p>
+        <script type="text/javascript">
+        document.write(Date());
+        </script>
+    </p> 
+</footer>
+
+</html>
